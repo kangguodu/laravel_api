@@ -1,0 +1,111 @@
+/user/login:
+  post:
+    consumes:
+      - application/x-www-form-urlencoded
+    tags:
+      - user
+    summary: 登录
+    description: 登录
+    parameters:
+      - name: email
+        in: formData
+        description: 手机号码
+        required: true
+        type: string
+      - name: password
+        in: formData
+        description: 密码
+        required: true
+        type: string
+    responses:
+      200:
+        description: 请求成功
+    security:
+      - Bearer: []
+/user/signup:
+  post:
+    consumes:
+      - application/x-www-form-urlencoded
+    tags:
+      - user
+    summary: 注册
+    description: 注册
+    parameters:
+      - name: email
+        in: formData
+        description: 手机号码
+        required: true
+        type: string
+      - name: password
+        in: formData
+        description: 密码
+        required: true
+        type: string
+    responses:
+      200:
+        description: 请求成功
+    security:
+      - Bearer: []
+/user/logout:
+  get:
+    tags:
+      - user
+    summary: 退出登錄
+    description: 退出登錄
+    responses:
+      200:
+        description: 成功
+    security:
+      - Bearer: []
+/user/userinfo:
+  get:
+    tags:
+      - user
+    summary: 獲取個人資料
+    description: 獲取個人資料
+    responses:
+      200:
+        description: 请求成功
+    security:
+      - Bearer: []
+/user/profile:
+  post:
+    consumes:
+      - application/x-www-form-urlencoded
+    tags:
+      - user
+    summary: 更新個人資料
+    description: 更新個人資料
+    parameters:
+      - name: nickname
+        in: formData
+        description: 昵称
+        required: false
+        type: string
+      - name: avatar
+        in: formData
+        description: 头像
+        required: false
+        type: string
+      - name: sightml
+        in: formData
+        description: 个性签名
+        required: false
+        type: string
+      - name: birthday
+        in: formData
+        description: 生日
+        required: false
+        type: string
+      - name: gender
+        in: formData
+        description: '性别(1:男,2:女)'
+        required: false
+        type: integer
+        enum: [1,2]
+        default: 1
+    responses:
+      200:
+        description: 请求成功
+    security:
+      - Bearer: []

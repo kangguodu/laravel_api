@@ -1,0 +1,6 @@
+
+Laravel
+
+```
+ALTER TABLE `member` MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+```

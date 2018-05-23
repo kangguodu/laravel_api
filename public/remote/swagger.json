@@ -1,0 +1,264 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "測試 api",
+    "description": "測試 api swagger文档",
+    "termsOfService": "",
+    "contact": {
+      "email": "sales@techrare.com"
+    },
+    "version": "1.0.0"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/laravel_simple/public/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/x-www-form-urlencoded"
+  ],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "tags": [
+          "user"
+        ],
+        "summary": "登录",
+        "description": "登录",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "手机号码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "请求成功"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "tags": [
+          "user"
+        ],
+        "summary": "注册",
+        "description": "注册",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "手机号码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "请求成功"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "退出登錄",
+        "description": "退出登錄",
+        "responses": {
+          "200": {
+            "description": "成功"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/user/userinfo": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "獲取個人資料",
+        "description": "獲取個人資料",
+        "responses": {
+          "200": {
+            "description": "请求成功"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/user/profile": {
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "tags": [
+          "user"
+        ],
+        "summary": "更新個人資料",
+        "description": "更新個人資料",
+        "parameters": [
+          {
+            "name": "nickname",
+            "in": "formData",
+            "description": "昵称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "avatar",
+            "in": "formData",
+            "description": "头像",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sightml",
+            "in": "formData",
+            "description": "个性签名",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "birthday",
+            "in": "formData",
+            "description": "生日",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "formData",
+            "description": "性别(1:男,2:女)",
+            "required": false,
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ],
+            "default": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "请求成功"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "http_success": {
+      "description": "请求成功"
+    },
+    "http_unauthorized": {
+      "description": "没有登录或者登录的token过期"
+    },
+    "product_status": {
+      "description": "The status of a product",
+      "type": "string",
+      "default": "available",
+      "enum": [
+        "available",
+        "discontinued"
+      ]
+    },
+    "NotFound": {
+      "description": "The specified resource was not found"
+    },
+    "Unauthorized": {
+      "description": "没有登录或者登录的token过期"
+    },
+    "UnprocessableEntity": {
+      "description": "提交的数据未通过验证"
+    },
+    "response_format": {
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "请求的状态,true:成功 false:失败",
+          "example": true
+        },
+        "error_code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回的错误码,0: 成功,大于0: 失败",
+          "example": "0"
+        },
+        "error_msg": {
+          "type": "string",
+          "description": "错误信息，当非请求成功，error_msg将显示对应的错误信息",
+          "example": ""
+        },
+        "data": {
+          "type": "string",
+          "description": "请求成功返回的响应资料",
+          "example": "[]"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "user",
+      "description": "用户"
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

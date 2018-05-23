@@ -1,0 +1,12 @@
+swagger: '2.0'
+info:
+  title: 測試 api
+  description: '測試 api swagger文档'
+  termsOfService: ''
+  contact:
+    email: sales@techrare.com
+  version: 1.0.0
+#host: 'localhost:8081'
+host: '127.0.0.1'
+basePath: /laravel_simple/public/api
+$ref#common: "./common.yaml"
