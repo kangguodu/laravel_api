@@ -77,7 +77,7 @@ class BaseController extends Controller
 
     public function getAuthUserId(){
         $user = $this->getAuthUser();
-        return $user->uid;
+        return $user->id;
     }
 
 }

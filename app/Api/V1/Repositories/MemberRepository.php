@@ -29,7 +29,7 @@ class MemberRepository
         User::unguard();
         $user = User::create($userData);
         User::reguard();
-        if(!$user->uid) {
+        if(!$user->id) {
             return false;
         }else{
             return true;
@@ -37,14 +37,14 @@ class MemberRepository
     }
 
     public function getByEmail($email){
-        return $this->user->select('uid','email','avatar','gender','status','nickname','birthday','avatarstatus','credits')
+        return $this->user->select('id','email','avatar','gender','status','nickname','birthday','avatarstatus','credits')
             ->where('email', $email)
             ->first();
     }
 
     public function getById($id){
-        return $this->user->select('uid','email','avatar','gender','status','nickname','birthday','avatarstatus','credits')
-            ->where('uid', $id)
+        return $this->user->select('id','email','avatar','gender','status','nickname','birthday','avatarstatus','credits')
+            ->where('id', $id)
             ->first();
     }
 
@@ -62,7 +62,7 @@ class MemberRepository
         $update_field = array('nickname','avatar','birthday','gender');
         $data = $this->updateDataFilter($request,$update_field);
         if(count($data)){
-            (new User())->where('uid','=',$user->uid)
+            (new User())->where('id','=',$user->id)
                 ->update($data);
         }
     }

@@ -8,7 +8,7 @@ class MemberTransformer extends TransformerAbstract
     public function transform($object){
         $object->avatar = $object->avatarstatus?url('/images/avatar/').'/default.png':$object->avatar;
         $result = array(
-            'uid' => $object->uid,
+            'id' => $object->id,
             'email' => $object->email,
             'avatar' =>  $object->avatar,
             'status' => intval($object->status),
